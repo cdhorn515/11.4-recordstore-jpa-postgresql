@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Record Store Home</title>
+    <span th:include="includes :: css"></span>
+</head>
+<body>
+
+<div th:include="navbar :: navbar"></div>
+
+<div class="container">
+    <h1>Welcome to the record store</h1>
+    <h3>What are you in the mood to listen to? Search for your favorite band below:</h3>
+
+    <form action="/bandDetail" method="post">
+        <div class="form-group">
+            <label for="name">Band name:</label>
+            <input type="text" class="form-control" name="name" id="name"/>
+        </div>
+        <button type="submit" class="btn btn-warning">Search</button>
+    </form>
+
+    <h3>Not sure of the band name but know the album title? Enter it here and we'll look for it in our records:</h3>
+    <form action="/albumDetail" method="post">
+        <div class="form-group">
+            <label for="title">Album title:</label>
+            <input type="text" class="form-control" name="title" id="title"/>
+        </div>
+        <button type="submit" class="btn btn-warning">Search</button>
+    </form>
+
+    <h3>Know the band name and the album you're looking for? Enter both here and we'll see if we've got it in our
+        records:</h3>
+    <form action="/bandAndAlbumDetail" method="post">
+        <div class="form-group">
+            <label for="name">Band name:</label>
+            <input type="text" class="form-control" name="name" id="name"/>
+        </div>
+        <div class="form-group">
+            <label for="album">Album title:</label>
+            <input type="text" class="form-control" name="album" id="album"/>
+        </div>
+
+        <button type="submit" class="btn btn-warning">Search</button>
+    </form>
+
+
+</div>
+
+
+</body>
+</html>

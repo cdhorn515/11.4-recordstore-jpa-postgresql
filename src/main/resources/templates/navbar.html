@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+<div th:fragment="navbar">
+    <nav class="navbar navbar-default">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+
+                <a class="navbar-brand" href="#">Music Mania</a>
+            </div>
+
+            <ul class="nav navbar-nav navbar-right">
+
+                <li><a th:href="@{/}">Home</a></li>
+                <li><a th:href="@{/}">Search</a></li>
+                <li><a th:href="@{/addBand}">Add Band</a></li>
+                <li><a th:href="@{/addAlbum}">Add Album</a></li>
+                <li><a th:href="@{/addSong}">Add Song</a></li>
+
+            </ul>
+        </div>
+    </nav>
+</div>
+
+</body>
+</html>
