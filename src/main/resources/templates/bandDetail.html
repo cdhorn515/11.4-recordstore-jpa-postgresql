@@ -15,7 +15,7 @@
 
     <ul>
 
-        <li th:each="${bands : bands}" th:text="${bands.name}"></li>
+        <li th:each="band : ${band}" th:text="${band.name}"></li>
     </ul>
 
     <form action="/bandSearch" method="post">

@@ -3,9 +3,11 @@ package com.cdhorn.Controllers;
 import com.cdhorn.Interfaces.AlbumRepository;
 import com.cdhorn.Interfaces.BandRepository;
 import com.cdhorn.Interfaces.SongRepository;
+import com.cdhorn.Models.Album;
 import com.cdhorn.Models.Band;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -51,11 +53,20 @@ public class BandController {
     public String addSong() {
         return "addSong";
     }
-//    @RequestMapping("/bandSearch")
-//    public String bandSearchResult(@RequestParam("name") String name,
-//                               Model model) {
-//        Iterable<Band> bands = bandRepo.findAll();
-//        model.addAttribute("bands", bands);
-//        return "bandDetail";
-//    }
+    @RequestMapping("/bandDetail")
+    public String bandSearchResult(@RequestParam("name") String name,
+                               Model model) {
+        Iterable<Band> band = bandRepo.findBandByName(name);
+        model.addAttribute("band", band);
+        return "bandDetail";
+    }
+
+    @RequestMapping("/albumDetail")
+    public String albumSearchResult(@RequestParam("title") String title,
+                                   Model model) {
+        Iterable<Album> album = albumRepo.findAlbumByTitle(title);
+        model.addAttribute("title", title);
+        return "albumDetail";
+    }
+
 }
