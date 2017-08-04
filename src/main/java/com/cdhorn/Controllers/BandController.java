@@ -44,19 +44,6 @@ public class BandController {
     }
 
 
-    @RequestMapping("/addSong")
-    public String addSong() {
-//        @RequestParam("title") String title,
-//        @RequestParam("album_title") String album_title,
-//        Model model
-//        Song song = new Song();
-//        Iterable<Album> album = albumRepo.findAlbumByTitle(album_title);
-//        Iterable<Band> band = bandRepo.findBandByBandname(album_title);
-//        song.setTitle(title);
-////        song.setAlbum();
-//        songRepo.save(song);
-        return "addSong";
-    }
     @RequestMapping("/bandDetail")
     public String bandSearchResult(
             @RequestParam("bandname") String bandname,

@@ -5,6 +5,7 @@ import com.cdhorn.Interfaces.BandRepository;
 import com.cdhorn.Interfaces.SongRepository;
 import com.cdhorn.Models.Album;
 import com.cdhorn.Models.Band;
+import com.cdhorn.Models.Song;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -56,14 +57,35 @@ public class AlbumController {
     @RequestMapping("/albumDetail")
     public String albumSearchResult(@RequestParam("title") String title,
                                    Model model) {
-        Iterable<Album> album = albumRepo.findAlbumByTitle(title);
+        Album album = albumRepo.findAlbumByTitle(title);
         model.addAttribute("album", album);
         return "albumDetail";
-        // List<Song> songs = songRepo.findAllByAlbum(title);
-//        List<Song> songs1 = new ArrayList<>();
-//        songs.forEach(songs1 :: add);
-//        model.addAttribute("songs1", songs1);
-        // model.addAllAttributes(songs);
     }
+
+    @RequestMapping(value = "/addSong", method = RequestMethod.POST)
+    public String addSong(@RequestParam("title") String title,
+                              @RequestParam("album_id") String album_id,
+                              @RequestParam("band_id") String band_id,
+                              Model model) {
+        Song song = new Song();
+        song.setTitle(title);
+
+        try {
+            long albumId = Long.parseLong(album_id);
+            Album album = albumRepo.findOne(albumId);
+            song.setAlbum(album);
+
+            long bandId = Long.parseLong(band_id);
+            Band band = bandRepo.findOne(bandId);
+            song.setBand(band);
+        } catch (Exception ex) {
+
+        }
+
+        songRepo.save(song);
+        return ("redirect:/");
+    }
+
+
 
 }
