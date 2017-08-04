@@ -12,20 +12,44 @@
 <div class="container">
 
     <h1>band info here</h1>
+<div class="row">
+    <div class="col-md-4" th:each="band : ${band}">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title" th:text="${band.bandname}"></h3>
+            </div>
+            <div class="panel-body">
+                <p th:inline="text">Genre: [[${band.genre}]]</p>
+            </div>
+            <div class="container-fluid">
+            <h4>Albums:</h4>
+            </div>
+            <div class="panel-body">
+                <p th:each="album : ${band.albums}" th:text="${album.title}"></p>
+            </div>
 
-    <ul>
-
-        <li th:each="band : ${band}" th:text="${band.name}"></li>
-    </ul>
-
-    <form action="/bandSearch" method="post">
-        <div class="form-group">
-            <label for="album">If you know the specific album you are looking for you can enter it
-                below:</label>
-            <input type="text" class="form-control" name="album" id="album"/>
         </div>
-        <button type="submit" class="btn btn-warning">Search</button>
+    </div>
+</div>
+
+    <h3>Not finding what you're looking for? Please add your band to our database by filling out the form below:</h3>
+
+    <form action="/addBand" method="post">
+        <div class="form-group">
+            <label for="bandname">Band name:</label>
+            <input type="text" class="form-control" id="bandname" name="bandname"/>
+        </div>
+        <div class="form-group">
+            <label for="genre">Type of music:</label>
+            <input type="genre" class="form-control" name="genre" id="genre"/>
+        </div>
+
+        <button type="submit" class="btn btn-default">Submit</button>
     </form>
+
+
+
+
 
 
 </div>

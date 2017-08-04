@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Band detail page</title>
+    <span th:include="includes :: css"></span>
+</head>
+<body>
+
+<div th:include="navbar :: navbar"></div>
+
+<div class="container">
+
+    <h1>album info here</h1>
+
+    <div class="col-md-4" th:each="album : ${album}">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title" th:text="${album.title}"></h3>
+            </div>
+            <div class="panel-body">
+                <p th:inline="text">Year released: [[${album.yearReleased}]]</p>
+            </div>
+            <div class="panel-body">
+                <p th:each="song : ${album.songs}" th:text="${song.title}"></p>
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <form action="/addAlbum" method="post">
+        <div class="form-group">
+            <label for="title"></label>
+            <input type="text" class="form-control" name="title" id="title"/>
+        </div>
+        <div class="form-group">
+            <label for="yearReleased"></label>
+            <input type="text" class="form-control" name="yearReleased" id="yearReleased"/>
+        </div>
+        <div class="form-group">
+            <label for="playlist">Band:</label>
+            <select name="playlist" class="form-control" id="playlist">
+                <option>-------</option>
+                <option th:value="${band.id}" th:each="band : ${bands}"
+                        th:text="${band.bandname}"></option>
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-warning">Add</button>
+    </form>
+
+
+</div>
+
+</body>
+</html>

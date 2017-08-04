@@ -15,8 +15,8 @@
 
     <form action="/bandDetail" method="post">
         <div class="form-group">
-            <label for="name">Band name:</label>
-            <input type="text" class="form-control" name="name" id="name"/>
+            <label for="bandname">Band name:</label>
+            <input type="text" class="form-control" name="bandname" id="bandname"/>
         </div>
         <button type="submit" class="btn btn-warning">Search</button>
     </form>
@@ -27,21 +27,6 @@
             <label for="title">Album title:</label>
             <input type="text" class="form-control" name="title" id="title"/>
         </div>
-        <button type="submit" class="btn btn-warning">Search</button>
-    </form>
-
-    <h3>Know the band name and the album you're looking for? Enter both here and we'll see if we've got it in our
-        records:</h3>
-    <form action="/bandAndAlbumDetail" method="post">
-        <div class="form-group">
-            <label for="name">Band name:</label>
-            <input type="text" class="form-control" name="name" id="name"/>
-        </div>
-        <div class="form-group">
-            <label for="album">Album title:</label>
-            <input type="text" class="form-control" name="album" id="album"/>
-        </div>
-
         <button type="submit" class="btn btn-warning">Search</button>
     </form>
 

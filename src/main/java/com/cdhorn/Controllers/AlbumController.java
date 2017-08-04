@@ -49,21 +49,21 @@ public class AlbumController {
         } catch (Exception ex){
 
         }
-
         albumRepo.save(album);
-
         return "redirect:/";
-
     }
 
     @RequestMapping("/albumDetail")
     public String albumSearchResult(@RequestParam("title") String title,
                                    Model model) {
         Iterable<Album> album = albumRepo.findAlbumByTitle(title);
-//        Iterable<Song> songs = songRepo.findAllByAlbum(title);
         model.addAttribute("album", album);
-//        model.addAttribute("songs", songs);
         return "albumDetail";
+        // List<Song> songs = songRepo.findAllByAlbum(title);
+//        List<Song> songs1 = new ArrayList<>();
+//        songs.forEach(songs1 :: add);
+//        model.addAttribute("songs1", songs1);
+        // model.addAllAttributes(songs);
     }
 
 }
