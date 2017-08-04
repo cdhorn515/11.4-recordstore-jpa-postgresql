@@ -43,10 +43,6 @@ public class BandController {
         return "addBand";
     }
 
-    @RequestMapping("/addAlbum")
-    public String addAlbum() {
-        return "redirect:/addSong";
-    }
 
     @RequestMapping("/addSong")
     public String addSong() {
@@ -69,15 +65,5 @@ public class BandController {
         model.addAttribute("band", band);
         return "bandDetail";
     }
-//
-//    @RequestMapping("/albumDetail")
-//    public String albumSearchResult(@RequestParam("title") String title,
-//                                   Model model) {
-//        Iterable<Album> album = albumRepo.findAlbumByTitle(title);
-//        Iterable<Song> songs = songRepo.findAllByAlbum(title);
-//        model.addAttribute("album", album);
-//        model.addAttribute("songs", songs);
-//        return "albumDetail";
-//    }
 
 }

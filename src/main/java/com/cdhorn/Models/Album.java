@@ -12,6 +12,7 @@ public class Album {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String title;
+    @Column(name = "year_released")
     private int yearReleased;
     @ManyToOne
     @JoinColumn(name = "band_id")
