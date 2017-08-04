@@ -12,6 +12,32 @@
 <div class="container">
 
     <h1>Add your favorite songs to our database!</h1>
+
+    <form action="/addAlbum" method="post">
+        <div class="form-group">
+            <label for="title">Song title:</label>
+            <input type="text" class="form-control" name="title" id="title"/>
+        </div>
+        <div class="form-group">
+            <label for="yearReleased">Album:</label>
+            <select name="yearReleased" class="form-control" id="yearReleased">
+                <option>-------</option>
+                <option th:value="${album.id}" th:each="album : ${albums}"
+                        th:text="${album.title}"></option>
+            </select>
+
+        </div>
+        <div class="form-group">
+            <label for="bandnameId">Band:</label>
+            <select name="bandnameId" class="form-control" id="bandnameId">
+                <option>-------</option>
+                <option th:value="${band.id}" th:each="band : ${bands}"
+                        th:text="${band.bandname}"></option>
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-warning">Add</button>
+    </form>
 </div>
 </body>
 </html>
