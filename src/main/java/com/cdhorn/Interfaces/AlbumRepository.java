@@ -8,4 +8,5 @@ import org.springframework.stereotype.Repository;
 public interface AlbumRepository extends CrudRepository<Album, Long> {
 
     Iterable<Album> findAlbumByTitle(String Title);
+
 }

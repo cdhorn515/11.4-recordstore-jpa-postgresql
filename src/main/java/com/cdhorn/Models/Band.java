@@ -11,7 +11,9 @@ public class Band {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    private String name;
+
+    @Column(name = "band_name")
+    private String bandname;
     private String genre;
 
     @OneToMany(mappedBy = "band", cascade = CascadeType.ALL)
@@ -31,12 +33,12 @@ public class Band {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getBandname() {
+        return bandname;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setBandname(String band_name) {
+        this.bandname = band_name;
     }
 
     public String getGenre() {

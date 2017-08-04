@@ -6,5 +6,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface BandRepository extends CrudRepository<Band, Long> {
-    Iterable<Band> findBandByName(String name);
+    Iterable<Band> findBandByBandname(String band_name);
+
 }

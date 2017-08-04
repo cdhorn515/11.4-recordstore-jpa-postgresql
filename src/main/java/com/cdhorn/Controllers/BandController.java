@@ -3,7 +3,6 @@ package com.cdhorn.Controllers;
 import com.cdhorn.Interfaces.AlbumRepository;
 import com.cdhorn.Interfaces.BandRepository;
 import com.cdhorn.Interfaces.SongRepository;
-import com.cdhorn.Models.Album;
 import com.cdhorn.Models.Band;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -30,15 +29,15 @@ public class BandController {
     }
 
     @RequestMapping(value = "/addBand", method = RequestMethod.POST)
-    public String addBand(@RequestParam("name") String name,
+    public String addBand(@RequestParam("bandname") String name,
                           @RequestParam("genre") String genre) {
         Band band = new Band();
-        band.setName(name);
+        band.setBandname(name);
         band.setGenre(genre);
         bandRepo.save(band);
         return "index";
     }
-
+    //get endpoint
     @RequestMapping("/addBand")
     public String addBand() {
         return "addBand";
@@ -46,27 +45,39 @@ public class BandController {
 
     @RequestMapping("/addAlbum")
     public String addAlbum() {
-        return "addAlbum";
+        return "redirect:/addSong";
     }
 
     @RequestMapping("/addSong")
     public String addSong() {
+//        @RequestParam("title") String title,
+//        @RequestParam("album_title") String album_title,
+//        Model model
+//        Song song = new Song();
+//        Iterable<Album> album = albumRepo.findAlbumByTitle(album_title);
+//        Iterable<Band> band = bandRepo.findBandByBandname(album_title);
+//        song.setTitle(title);
+////        song.setAlbum();
+//        songRepo.save(song);
         return "addSong";
     }
     @RequestMapping("/bandDetail")
-    public String bandSearchResult(@RequestParam("name") String name,
-                               Model model) {
-        Iterable<Band> band = bandRepo.findBandByName(name);
+    public String bandSearchResult(
+            @RequestParam("bandname") String bandname,
+            Model model) {
+        Iterable<Band> band = bandRepo.findBandByBandname(bandname);
         model.addAttribute("band", band);
         return "bandDetail";
     }
-
-    @RequestMapping("/albumDetail")
-    public String albumSearchResult(@RequestParam("title") String title,
-                                   Model model) {
-        Iterable<Album> album = albumRepo.findAlbumByTitle(title);
-        model.addAttribute("title", title);
-        return "albumDetail";
-    }
+//
+//    @RequestMapping("/albumDetail")
+//    public String albumSearchResult(@RequestParam("title") String title,
+//                                   Model model) {
+//        Iterable<Album> album = albumRepo.findAlbumByTitle(title);
+//        Iterable<Song> songs = songRepo.findAllByAlbum(title);
+//        model.addAttribute("album", album);
+//        model.addAttribute("songs", songs);
+//        return "albumDetail";
+//    }
 
 }

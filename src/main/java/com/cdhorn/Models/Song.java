@@ -44,4 +44,14 @@ public class Song {
     public void setAlbum(Album album) {
         this.album = album;
     }
+
+    public Band getBand() {
+        return band;
+    }
+
+    public void setBand(Band band) {
+        this.band = band;
+    }
+
+
 }
