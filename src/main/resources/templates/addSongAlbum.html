@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Record Store Home</title>
+    <span th:include="includes :: css"></span>
+</head>
+<body>
+
+<div th:include="navbar :: navbar"></div>
+
+<div class="container">
+
+    <h1>Add your favorite songs to our database!</h1>
+
+    <form action="/addSongAndAlbum" method="post">
+        <div class="form-group">
+            <label for="title">Song title:</label>
+            <input type="text" class="form-control" name="title" id="title" th:value="${song.title}"/>
+            <input type="hidden" class="form-control" name="song_id" id="song_id" th:value="${song.id}"/>
+        </div>
+        <div class="form-group">
+            <label for="bandname">Band:</label>
+            <input type="text" class="form-control" name="bandname" id="bandname" th:value="${song.band.bandname}"/>
+            <input type="hidden" class="form-control" name="band_id" id="band_id" th:value="${song.band.id}"/>
+        </div>
+
+
+        <!--<div class="form-group">-->
+            <!--<label for="band_id">Band:</label>-->
+            <!--<select name="band_id" class="form-control" id="band_id">-->
+                <!--<option>-&#45;&#45;&#45;&#45;&#45;&#45;</option>-->
+                <!--<option th:value="${song.band.id}"-->
+                        <!--th:text="${song.band.bandname}"></option>-->
+            <!--</select>-->
+        <!--</div>-->
+<div class="form-group">
+    <label for="album_id">Album:</label>
+    <select name="album_id" class="form-control" id="album_id">
+        <option>-------</option>
+        <option th:value="${album.id}" th:each="album : ${albums}"
+                th:text="${album.title}"></option>
+    </select>
+</div>
+        <button type="submit" class="btn btn-warning">Add</button>
+    </form>
+
+    <form action="/addAlbum" method="get">
+        <h3>Don't see the album listed? Click the button below to add it to our database:</h3>
+        <button type="submit" class="btn btn-warning">Add album</button>
+
+    </form>
+</div>
+</body>
+</html>

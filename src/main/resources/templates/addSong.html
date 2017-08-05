@@ -13,30 +13,36 @@
 
     <h1>Add your favorite songs to our database!</h1>
 
-    <form action="/addAlbum" method="post">
+    <form action="/addSongAndBand/" method="post">
         <div class="form-group">
             <label for="title">Song title:</label>
-            <input type="text" class="form-control" name="title" id="title"/>
+            <input type="text" class="form-control" name="title" id="title" value=""/>
         </div>
-        <div class="form-group">
-            <label for="yearReleased">Album:</label>
-            <select name="yearReleased" class="form-control" id="yearReleased">
-                <option>-------</option>
-                <option th:value="${album.id}" th:each="album : ${albums}"
-                        th:text="${album.title}"></option>
-            </select>
 
-        </div>
         <div class="form-group">
-            <label for="bandnameId">Band:</label>
-            <select name="bandnameId" class="form-control" id="bandnameId">
+            <label for="band_id">Band:</label>
+            <select name="band_id" class="form-control" id="band_id">
                 <option>-------</option>
                 <option th:value="${band.id}" th:each="band : ${bands}"
                         th:text="${band.bandname}"></option>
             </select>
         </div>
+        <!--<div class="form-group">-->
+            <!--<label for="yearReleased">Album:</label>-->
+            <!--<select name="yearReleased" class="form-control" id="yearReleased">-->
+                <!--<option>-&#45;&#45;&#45;&#45;&#45;&#45;</option>-->
+                <!--<option th:value="${album.id}" th:each="album : ${albums}"-->
+                        <!--th:text="${album.title}"></option>-->
+            <!--</select>-->
+        <!--</div>-->
 
         <button type="submit" class="btn btn-warning">Add</button>
+    </form>
+
+    <form action="/addBand" method="get">
+        <h3>Don't see the band listed? Click on the button below to add them to our database:</h3>
+        <button type="submit" class="btn btn-warning">Add band</button>
+
     </form>
 </div>
 </body>

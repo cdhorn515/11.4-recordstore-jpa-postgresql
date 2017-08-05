@@ -8,7 +8,7 @@ import java.util.List;
 
 @Repository
 public interface SongRepository extends CrudRepository<Song, Long> {
-
+    Song findByTitle(String title);
     List<Song> findAllByAlbum(String title);
     Iterable<Song> findAllByBand(String name);
 }
