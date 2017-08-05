@@ -25,11 +25,15 @@ public class AlbumController {
     @Autowired
     SongRepository songRepo;
 
-    @RequestMapping("/addAlbum")
-    public String addAlbum(Model model) {
+    @RequestMapping(value = "/albumInfo", method = RequestMethod.POST)
+    public String albumInfo(Model model) {
         Iterable<Band> bands = bandRepo.findAll();
         model.addAttribute("bands", bands);
-
+        return "addAlbum";
+    }
+    //GET request
+    @RequestMapping("/addAlbum")
+    public String addAlbum() {
         return "addAlbum";
     }
 
@@ -53,7 +57,7 @@ public class AlbumController {
         albumRepo.save(album);
         return "redirect:/";
     }
-
+    //GET request
     @RequestMapping("/albumDetail")
     public String albumSearchResult(@RequestParam("title") String title,
                                    Model model) {
@@ -62,8 +66,8 @@ public class AlbumController {
         return "albumDetail";
     }
 
-    @RequestMapping(value = "/addSong", method = RequestMethod.POST)
-    public String addSong(@RequestParam("title") String title,
+    @RequestMapping(value = "/albumDetail", method = RequestMethod.POST)
+    public String updateAlbum(@RequestParam("title") String title,
                               @RequestParam("album_id") String album_id,
                               @RequestParam("band_id") String band_id,
                               Model model) {
@@ -81,11 +85,8 @@ public class AlbumController {
         } catch (Exception ex) {
 
         }
-
         songRepo.save(song);
         return ("redirect:/");
     }
-
-
 
 }

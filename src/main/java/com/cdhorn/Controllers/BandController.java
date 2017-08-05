@@ -30,10 +30,12 @@ public class BandController {
 
     @RequestMapping(value = "/addBand", method = RequestMethod.POST)
     public String addBand(@RequestParam("bandname") String name,
-                          @RequestParam("genre") String genre) {
+                          @RequestParam("genre") String genre,
+                          @RequestParam("website") String website) {
         Band band = new Band();
         band.setBandname(name);
         band.setGenre(genre);
+        band.setWebsite(website);
         bandRepo.save(band);
         return "index";
     }
@@ -42,7 +44,6 @@ public class BandController {
     public String addBand() {
         return "addBand";
     }
-
 
     @RequestMapping("/bandDetail")
     public String bandSearchResult(

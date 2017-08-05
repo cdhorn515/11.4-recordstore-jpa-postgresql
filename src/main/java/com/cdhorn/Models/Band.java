@@ -15,6 +15,7 @@ public class Band {
     @Column(name = "band_name")
     private String bandname;
     private String genre;
+    private String website;
 
     @OneToMany(mappedBy = "band", cascade = CascadeType.ALL)
     private List<Album> albums;
@@ -63,5 +64,13 @@ public class Band {
 
     public void setSongs(List<Song> songs) {
         this.songs = songs;
+    }
+
+    public String getWebsite() {
+        return website;
+    }
+
+    public void setWebsite(String website) {
+        this.website = website;
     }
 }

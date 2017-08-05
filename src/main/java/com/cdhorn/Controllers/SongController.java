@@ -54,15 +54,6 @@ public class SongController {
         return "addSongAlbum";
     }
 
-//    @RequestMapping(value = "/addSong/{title}", method = RequestMethod.GET)
-//    public String addSongAlone(@PathVariable("title") String title,
-//                          Model model) {
-//        Song song = songRepo.findByTitle(title);
-//        model.addAttribute("song", song);
-////        or whatever page you want to render
-//        return "addSongAlbum";
-//    }
-
     @RequestMapping(value = "/addSongAndAlbum", method = RequestMethod.POST)
     public String addSongAndAlbum(@RequestParam("title") String title,
                                   @RequestParam("song_id") String song_id,
@@ -84,47 +75,4 @@ public class SongController {
         return "redirect:/";
     }
 
-    /*
-        @RequestMapping(value = "/edit/{movieId}", method = RequestMethod.GET)
-    public String editLandingPage(@PathVariable("movieId") long movieId, Model model) {
-        Movie movie = movieRepo.findOne(movieId);
-        model.addAttribute("movie", movie);
-        return "edit";
-    }
-
-
-    @RequestMapping(value = "/edit/{movieId}", method = RequestMethod.POST)
-    public String edit(@PathVariable("movieId") long movieId,
-                            @RequestParam("title") String title,
-                            @RequestParam("genre") String genre,
-                            @RequestParam("imdblink") String imdblink,
-                            @RequestParam("releasedate") String releasedate,
-                            Model model) throws Exception{
-        Movie movie = movieRepo.findOne(movieId);
-        movie.setTitle(title);
-        movie.setGenre(genre);
-        movie.setImdblink(imdblink);
-        Date formattedReleaseDate = new SimpleDateFormat("yyyy-MM-dd").parse(releasedate);
-        movie.setReleasedate(formattedReleaseDate);
-        movieRepo.save(movie);
-        model.addAttribute(movie);
-        return "edit";
-    }
-
-     */
-
-
-//    @RequestMapping("/addSong")
-//    public String addSong() {
-////        @RequestParam("title") String title,
-////        @RequestParam("album_title") String album_title,
-////        Model model
-////        Song song = new Song();
-////        Iterable<Album> album = albumRepo.findAlbumByTitle(album_title);
-////        Iterable<Band> band = bandRepo.findBandByBandname(album_title);
-////        song.setTitle(title);
-//////        song.setAlbum();
-////        songRepo.save(song);
-//        return "addSong";
-//    }
 }
