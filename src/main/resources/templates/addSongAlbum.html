@@ -9,7 +9,8 @@
 
 <div th:include="navbar :: navbar"></div>
 
-<div class="container">
+<div class="container body">
+    <div th:include="includes :: img"></div>
 
     <h1>Add your favorite songs to our database!</h1>
 
@@ -25,30 +26,21 @@
             <input type="hidden" class="form-control" name="band_id" id="band_id" th:value="${song.band.id}"/>
         </div>
 
-
-        <!--<div class="form-group">-->
-            <!--<label for="band_id">Band:</label>-->
-            <!--<select name="band_id" class="form-control" id="band_id">-->
-                <!--<option>-&#45;&#45;&#45;&#45;&#45;&#45;</option>-->
-                <!--<option th:value="${song.band.id}"-->
-                        <!--th:text="${song.band.bandname}"></option>-->
-            <!--</select>-->
-        <!--</div>-->
-<div class="form-group">
-    <label for="album_id">Album:</label>
-    <select name="album_id" class="form-control" id="album_id">
-        <option>-------</option>
-        <option th:value="${album.id}" th:each="album : ${albums}"
-                th:text="${album.title}"></option>
-    </select>
-</div>
-        <button type="submit" class="btn btn-warning">Add</button>
+        <div class="form-group">
+            <label for="album_id">Album:</label>
+            <select name="album_id" class="form-control" id="album_id">
+                <option>-------</option>
+                <option th:value="${album.id}" th:each="album : ${albums}"
+                        th:text="${album.title}"></option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Add</button>
     </form>
 
     <form action="/addAlbum" method="get">
-        <h3>Don't see the album listed? Click the button below to add it to our database:</h3>
-        <button type="submit" class="btn btn-warning">Add album</button>
-
+        <h4>Don't see the album listed?</h4>
+            <h4>Click the button below to add it to our database:</h4>
+        <button type="submit" class="btn btn-primary">Add album</button>
     </form>
 </div>
 </body>

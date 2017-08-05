@@ -49,6 +49,7 @@ public class BandController {
     public String bandSearchResult(
             @RequestParam("bandname") String bandname,
             Model model) {
+
         Iterable<Band> band = bandRepo.findBandByBandname(bandname);
         model.addAttribute("band", band);
         return "bandDetail";

@@ -9,7 +9,8 @@
 
 <div th:include="navbar :: navbar"></div>
 
-<div class="container">
+<div class="container body">
+    <div th:include="includes :: img"></div>
 
     <h1>Add your favorite songs to our database!</h1>
 
@@ -27,21 +28,14 @@
                         th:text="${band.bandname}"></option>
             </select>
         </div>
-        <!--<div class="form-group">-->
-            <!--<label for="yearReleased">Album:</label>-->
-            <!--<select name="yearReleased" class="form-control" id="yearReleased">-->
-                <!--<option>-&#45;&#45;&#45;&#45;&#45;&#45;</option>-->
-                <!--<option th:value="${album.id}" th:each="album : ${albums}"-->
-                        <!--th:text="${album.title}"></option>-->
-            <!--</select>-->
-        <!--</div>-->
 
-        <button type="submit" class="btn btn-warning">Add</button>
+        <button type="submit" class="btn btn-primary">Add</button>
     </form>
 
     <form action="/addBand" method="get">
-        <h3>Don't see the band listed? Click on the button below to add them to our database:</h3>
-        <button type="submit" class="btn btn-warning">Add band</button>
+        <h4>Don't see the band listed in the drop-down menu? </h4>
+        <h4>Click on the button below to add them to our database:</h4>
+        <button type="submit" class="btn btn-primary">Add band</button>
 
     </form>
 </div>

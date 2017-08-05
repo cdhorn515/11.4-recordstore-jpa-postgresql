@@ -5,7 +5,6 @@ import com.cdhorn.Interfaces.BandRepository;
 import com.cdhorn.Interfaces.SongRepository;
 import com.cdhorn.Models.Album;
 import com.cdhorn.Models.Band;
-import com.cdhorn.Models.Song;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -60,33 +59,15 @@ public class AlbumController {
     //GET request
     @RequestMapping("/albumDetail")
     public String albumSearchResult(@RequestParam("title") String title,
-                                   Model model) {
-        Album album = albumRepo.findAlbumByTitle(title);
-        model.addAttribute("album", album);
-        return "albumDetail";
-    }
+                                   Model model) throws Exception{
+        try{
+            Album album = albumRepo.findAlbumByTitle(title);
+            model.addAttribute("album", album);
 
-    @RequestMapping(value = "/albumDetail", method = RequestMethod.POST)
-    public String updateAlbum(@RequestParam("title") String title,
-                              @RequestParam("album_id") String album_id,
-                              @RequestParam("band_id") String band_id,
-                              Model model) {
-        Song song = new Song();
-        song.setTitle(title);
-
-        try {
-            long albumId = Long.parseLong(album_id);
-            Album album = albumRepo.findOne(albumId);
-            song.setAlbum(album);
-
-            long bandId = Long.parseLong(band_id);
-            Band band = bandRepo.findOne(bandId);
-            song.setBand(band);
         } catch (Exception ex) {
-
+            return "albumDetail";
         }
-        songRepo.save(song);
-        return ("redirect:/");
+        return "albumDetail";
     }
 
 }

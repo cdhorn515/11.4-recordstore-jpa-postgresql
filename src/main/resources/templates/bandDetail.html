@@ -9,14 +9,15 @@
 
 <div th:include="navbar :: navbar"></div>
 
-<div class="container">
+<div class="container body">
+    <div th:include="includes :: img"></div>
 
-    <h1>band info here</h1>
+    <h2 th:each="band : ${band}" th:text="${band.bandname}"></h2>
 <div class="row">
     <div class="col-md-4" th:each="band : ${band}">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h3 class="panel-title" th:text="${band.bandname}"></h3>
+                <h2 class="panel-title" ></h2>
             </div>
             <div class="panel-body">
                 <p th:inline="text">Genre: [[${band.genre}]]</p>
@@ -27,12 +28,18 @@
             <div class="panel-body">
                 <p th:each="album : ${band.albums}" th:text="${album.title}"></p>
             </div>
-
+            <div class="container-fluid">
+                <h4>Website:</h4>
+            </div>
+            <div class="panel-body">
+                <a th:href="@{${band.website}}" th:text="${band.website}"></a>
+            </div>
         </div>
     </div>
 </div>
 
-    <h3>Not finding what you're looking for? Please add your band to our database by filling out the form below:</h3>
+    <h3>Not finding what you're looking for?</h3>
+    <h3>Add your band to our database by filling out the form below:</h3>
 
     <form action="/addBand" method="post">
         <div class="form-group">
@@ -43,14 +50,13 @@
             <label for="genre">Type of music:</label>
             <input type="genre" class="form-control" name="genre" id="genre"/>
         </div>
+        <div class="form-group">
+            <label for="website">Band's website:</label>
+            <input type="text" class="form-control" name="website" id="website"/>
+        </div>
 
-        <button type="submit" class="btn btn-default">Submit</button>
+        <button type="submit" class="btn btn-primary">Submit</button>
     </form>
-
-
-
-
-
 
 </div>
 

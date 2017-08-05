@@ -9,4 +9,5 @@ public interface BandRepository extends CrudRepository<Band, Long> {
     Iterable<Band> findBandByBandname(String band_name);
 //    Iterable<Band> findBandByAlbums(Album album);
 
+
 }

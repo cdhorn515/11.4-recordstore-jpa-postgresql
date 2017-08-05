@@ -9,25 +9,29 @@
 
 <div th:include="navbar :: navbar"></div>
 
-<div class="container">
-    <h1>Welcome to the record store</h1>
-    <h3>What are you in the mood to listen to? Search for your favorite band below:</h3>
+<div class="container body">
 
-    <form action="/bandDetail" method="post">
+    <div th:include="includes :: img"></div>
+    <h1>Welcome to the record store</h1>
+    <h3>What are you in the mood to listen to? </h3>
+        <h3>Search for your favorite band below:</h3>
+
+    <form action="/bandDetail" method="get">
         <div class="form-group">
             <label for="bandname">Band name:</label>
             <input type="text" class="form-control" name="bandname" id="bandname"/>
         </div>
-        <button type="submit" class="btn btn-warning">Search</button>
+        <button type="submit" class="btn btn-primary">Search</button>
     </form>
 
-    <h3>Not sure of the band name but know the album title? Enter it here and we'll look for it in our records:</h3>
-    <form action="/albumDetail" method="post">
+    <h3>Not sure of the band name but know the album title? </h3>
+        <h3>Enter it here and we'll look for it in our records:</h3>
+    <form action="/albumDetail" method="get">
         <div class="form-group">
             <label for="title">Album title:</label>
             <input type="text" class="form-control" name="title" id="title"/>
         </div>
-        <button type="submit" class="btn btn-warning">Search</button>
+        <button type="submit" class="btn btn-primary">Search</button>
     </form>
 
 

@@ -9,48 +9,43 @@
 
 <div th:include="navbar :: navbar"></div>
 
-<div class="container">
+<div class="container body">
+    <div th:include="includes :: img"></div>
 
-    <h1 th:text="${album.band.bandname}"></h1>
-<div class="row">
-    <div class="col-md-4" th:each="album : ${album}">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title" th:text="${album.title}"></h3>
+    <h2 th:each="album : ${album}" th:text="${album.band.bandname}"></h2>
+    <div class="row">
+        <div class="col-md-4" th:each="album : ${album}">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title" th:text="${album.title}"></h3>
+                </div>
+                <div class="panel-body">
+                    <p th:inline="text">Year released: [[${album.yearReleased}]]</p>
+                </div>
+                <div class="panel-body">
+                    <p>Songs on album:</p>
+                    <p th:each="song : ${album.songs}" th:text="${song.title}"></p>
+                </div>
             </div>
-            <div class="panel-body">
-                <p th:inline="text">Year released: [[${album.yearReleased}]]</p>
-            </div>
-            <div class="panel-body">
-                <p th:each="song : ${album.songs}" th:text="${song.title}"></p>
-            </div>
+            <h3>Are we missing a song? Fill out the form below to add to the list:</h3>
+            <form action="/addSong" method="post">
+                <div class="form-group">
+                    <label for="title">Song Title:</label>
+                    <input type="text" class="form-control" name="title" id="title"/>
+                    <input type="hidden" th:value="${album.band.id}" name="band_id"/>
+                    <input type="hidden" th:value="${album.id}" name="album_id"/>
+                </div>
+                <button type="submit" class="btn btn-primary">Add</button>
+            </form>
 
         </div>
     </div>
-</div>
 
-<h3>Are we missing a song on this album? Please update our database below:</h3>
-    <form action="/addSong" method="post">
-        <div class="form-group">
-            <label for="title">Song Title:</label>
-            <input type="text" class="form-control" name="title" id="title"/>
-            <input type="hidden" th:value="${album.band.id}" name="band_id"/>
-            <input type="hidden" th:value="${album.id}" name="album_id"/>
-        </div>
-        <!--<div class="form-group">-->
-            <!--<label for="bandname" th:value="${album.band}"></label>-->
-            <!--<input type="text" class="form-control" name="bandname" id="bandname"/>-->
-        <!--</div>-->
-        <!--<div class="form-group">-->
-            <!--<label for="playlist">Band:</label>-->
-            <!--<select name="playlist" class="form-control" id="playlist">-->
-                <!--<option>-&#45;&#45;&#45;&#45;&#45;&#45;</option>-->
-                <!--<option th:value="${band.id}" th:each="band : ${bands}"-->
-                        <!--th:text="${band.bandname}"></option>-->
-            <!--</select>-->
-        <!--</div>-->
+    <h3>Not finding what you're looking for?</h3>
+    <h3>Click on the button below to add an album to our database</h3>
+    <form action="/addAlbum" method="get">
 
-        <button type="submit" class="btn btn-warning">Add</button>
+        <input type="submit" value="Add album"/>
     </form>
 
 

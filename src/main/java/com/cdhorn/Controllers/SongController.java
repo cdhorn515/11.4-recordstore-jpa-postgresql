@@ -32,6 +32,32 @@ public class SongController {
         return "addSong";
     }
 
+    @RequestMapping(value = "/addSong", method = RequestMethod.POST)
+    public String addSong(@RequestParam("title") String title,
+                          @RequestParam("band_id") String band_id,
+                          @RequestParam("album_id") String album_id,
+                          Model model) {
+        Song song = new Song();
+        song.setTitle(title);
+
+
+        try {
+            long bandId = Long.parseLong(band_id);
+            Band band = bandRepo.findOne(bandId);
+            long albumId = Long.parseLong(album_id);
+            Album album = albumRepo.findOne(albumId);
+            song.setAlbum(album);
+            song.setBand(band);
+
+        } catch (Exception ex) {
+
+        }
+        songRepo.save(song);
+
+        return "redirect:/";
+
+    }
+
     @RequestMapping(value = "/addSongAndBand/", method = RequestMethod.POST)
     public String addSongAndBand(@RequestParam("title") String title,
                           @RequestParam("band_id") String band_id,
