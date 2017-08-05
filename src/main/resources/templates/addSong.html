@@ -22,8 +22,8 @@
 
         <div class="form-group">
             <label for="band_id">Band:</label>
-            <select name="band_id" class="form-control" id="band_id">
-                <option>-------</option>
+            <select name="band_id" class="form-control" id="band_id" required="required">
+                <option></option>
                 <option th:value="${band.id}" th:each="band : ${bands}"
                         th:text="${band.bandname}"></option>
             </select>

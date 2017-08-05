@@ -1,21 +1,34 @@
 body{
-    background-image: url("../img/Vinyl-Records-Background-Vector.jpg");
-    background-repeat: no-repeat;
-    background-size: contain;
+    /*background-image: url("../img/Vinyl-Records-Background-Vector.jpg");*/
+    /*background-repeat: no-repeat;*/
+    /*background-size: contain;*/
     /*background-color: #FFD222;*/
     background: linear-gradient(to right, #FFD222 , #ECAF19);
-    background-position: right;
+    /*background-position: right;*/
 }
 
 .body{
     margin-top: 50px;
 }
 
+.image{
+    background-image: url("../img/Vinyl-Records-Background-Vector.jpg");
+    background-position: inherit;
+    background-repeat: no-repeat;
+    background-size: unset;
+    float: right;
+    height: 30vw;
+    width: 30vw;
+    border: solid 2px #EDB019;
+    border-radius: 50%;
+
+}
 img{
     float: right;
     height: 33%;
     width: 33%;
-
+    border: solid 2px #EDB019;
+    border-radius: 50%;
 }
 
 h1{
