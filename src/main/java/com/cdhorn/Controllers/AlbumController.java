@@ -2,7 +2,6 @@ package com.cdhorn.Controllers;
 
 import com.cdhorn.Interfaces.AlbumRepository;
 import com.cdhorn.Interfaces.BandRepository;
-import com.cdhorn.Interfaces.SongRepository;
 import com.cdhorn.Models.Album;
 import com.cdhorn.Models.Band;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,9 +20,6 @@ public class AlbumController {
     @Autowired
     BandRepository bandRepo;
 
-    @Autowired
-    SongRepository songRepo;
-
     @RequestMapping(value = "/albumInfo", method = RequestMethod.POST)
     public String albumInfo(Model model) {
         Iterable<Band> bands = bandRepo.findAll();
@@ -32,15 +28,17 @@ public class AlbumController {
     }
     //GET request
     @RequestMapping("/addAlbum")
-    public String addAlbum() {
+    public String addAlbum(Model model) {
+        Iterable<Band> bands = bandRepo.findAll();
+        model.addAttribute("bands", bands);
+
         return "addAlbum";
     }
 
     @RequestMapping(value = "/addAlbum", method = RequestMethod.POST)
     public String addAlbum(@RequestParam("title") String title,
                            @RequestParam("yearReleased") int yearReleased,
-                           @RequestParam("bandnameId") String bandnameId,
-                           Model model) {
+                           @RequestParam("bandnameId") String bandnameId) {
         Album album = new Album();
         album.setTitle(title);
         album.setYearReleased(yearReleased);

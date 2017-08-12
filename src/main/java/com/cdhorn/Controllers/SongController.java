@@ -35,8 +35,7 @@ public class SongController {
     @RequestMapping(value = "/addSong", method = RequestMethod.POST)
     public String addSong(@RequestParam("title") String title,
                           @RequestParam("band_id") String band_id,
-                          @RequestParam("album_id") String album_id,
-                          Model model) {
+                          @RequestParam("album_id") String album_id) {
         Song song = new Song();
         song.setTitle(title);
 
@@ -81,11 +80,11 @@ public class SongController {
     }
 
     @RequestMapping(value = "/addSongAndAlbum", method = RequestMethod.POST)
-    public String addSongAndAlbum(@RequestParam("title") String title,
+    public String addSongAndAlbum(
+//            @RequestParam("title") String title,
                                   @RequestParam("song_id") String song_id,
-                                  @RequestParam("band_id") String band_id,
-                                  @RequestParam("album_id") String album_id,
-                          Model model) {
+//                                  @RequestParam("band_id") String band_id,
+                                  @RequestParam("album_id") String album_id) {
 
         try {
             long songId = Long.parseLong(song_id);

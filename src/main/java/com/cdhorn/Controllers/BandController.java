@@ -1,8 +1,6 @@
 package com.cdhorn.Controllers;
 
-import com.cdhorn.Interfaces.AlbumRepository;
 import com.cdhorn.Interfaces.BandRepository;
-import com.cdhorn.Interfaces.SongRepository;
 import com.cdhorn.Models.Band;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,12 +14,6 @@ public class BandController {
 
     @Autowired
     BandRepository bandRepo;
-
-    @Autowired
-    AlbumRepository albumRepo;
-
-    @Autowired
-    SongRepository songRepo;
 
     @RequestMapping("/")
     public String index() {
