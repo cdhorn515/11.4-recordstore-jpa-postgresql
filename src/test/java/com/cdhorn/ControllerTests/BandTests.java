@@ -19,13 +19,19 @@ public class BandTests {
 
     @Before
     public void setup() {
-        mockMvc = MockMvcBuilders.standaloneSetup(new BandController()).build();
+        mockMvc = MockMvcBuilders.standaloneSetup(new BandController())
+                .setViewResolvers(new StandaloneMvcTestViewResolver())
+                .build();
     }
 
     @Test
     public void testHomePageStatus() throws Exception {
 
-        this.mockMvc.perform(get("/")).andExpect(status().isOk()).andExpect(view().name("index"));
+        mockMvc.perform(get("/")).andExpect(status().isOk()).andExpect(view().name("index"));
     }
 
+    @Test
+    public void testAddBandPageStatus() throws Exception {
+        mockMvc.perform(get("/addBand")).andExpect(status().isOk());
+    }
 }
