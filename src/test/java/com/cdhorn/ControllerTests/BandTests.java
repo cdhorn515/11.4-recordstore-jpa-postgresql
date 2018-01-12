@@ -7,6 +7,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
@@ -20,6 +21,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(classes = RecordstoreApplication.class)
+@ActiveProfiles(profiles = "test")
 public class BandTests extends RecordstoreApplicationTests {
 
     private MockMvc mockMvc;
@@ -59,5 +61,10 @@ public class BandTests extends RecordstoreApplicationTests {
     @Test
     public void testAddBandPageStatus() throws Exception {
         mockMvc.perform(get("/addBand")).andExpect(status().isOk());
+    }
+
+    @Test
+    public void testBandDetailPageStatus() throws Exception {
+        mockMvc.perform(get("/bandDetail")).andExpect(view().name("bandTest"));
     }
 }
