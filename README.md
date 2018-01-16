@@ -5,7 +5,8 @@ This application allows users to search for and store their favorite bands and a
 
 ## Built with
 
-* Java 8 
+* Maven
+* Java 8 (JDK 1.8.131) 
 * HTML5
 * CSS3
 * Thymeleaf 
@@ -16,8 +17,6 @@ This application allows users to search for and store their favorite bands and a
 This project is deployed using AWS Elastic Beanstalk and can be viewed [here](http://cornellrecordstore-env.vbgnuxuarb.us-east-2.elasticbeanstalk.com/). 
 
 To run this project locally:
-
-Make sure you have **Java8** and **JDK 1.8** installed (this project was built using **1.8.131**)
 
 You will need to create a Postgres database 
 
@@ -55,5 +54,5 @@ CREATE TABLE song (
 * Run `mvn clean package` from your project directory (this will build the project and create a jar file in the target directory).
 
 
-To run the project type: `java -jar target/recordstore-0.0.1-SNAPSHOT.jar`, then open a browser window and go to `localhost:8080`.
+To run the project type: `java -jar target/recordstore-1.1.0-RELEASE.jar`, then open a browser window and go to `localhost:8080`.
 
