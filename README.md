@@ -14,7 +14,7 @@ This application allows users to search for and store their favorite bands and a
 * PostgresSQL
  
 
-This project is deployed using AWS Elastic Beanstalk and can be viewed [here](http://cornellrecordstore-env.vbgnuxuarb.us-east-2.elasticbeanstalk.com/). 
+This project is deployed using Heroku and can be viewed [here](https://glacial-caverns-98460.herokuapp.com/). 
 
 To run this project locally:
 
