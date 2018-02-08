@@ -8,7 +8,7 @@
 	<version>1.1.0-RELEASE</version>
 	<packaging>jar</packaging>
 
-	<band_name>recordstore</band_name>
+	<name>recordstore</name>
 	<description>Demo project for Spring Boot</description>
 
 	<parent>
